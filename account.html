@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bank</title>
+    <style>
+      #result {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Acix Bank</h1>
+    <button id="UserAccount" onclick="userAccount()">Click to Start ATM</button>
+    <button id="credit" onclick="credit()">Credit</button>
+    <button id="debit" onclick="debit()">Debit</button>
+    <button id="pin" onclick="changePin()">Change PIN</button>
+    <button id="info" onclick="info()">Your Info</button>
+    <button id="cancel" onclick="clearAll()">Clear</button>
+
+    <h1 id="result"></h1>
+    <script>
+      let userAccountNumber;
+      let userPin;
+      let user_number;
+      let user_otp;
+      let change_pin;
+
+      let number = 9999555510;
+      let otp = 2609;
+      let accountNumber = 1;
+      let accountPIN = 262007;
+      let name = "Aditya";
+      let amount = 100000
+
+      let UserAccount_btn = document.getElementById("UserAccount");
+      let credit_btn = document.getElementById("credit");
+      let debit_btn = document.getElementById("debit");
+      let pin_btn = document.getElementById("pin");
+      let show = document.getElementById("result");
+      let info_btn = document.getElementById("info");
+      let cancel = document.getElementById("cancel")
+
+      credit_btn.style.display = "none";
+      debit_btn.style.display = "none";
+      pin_btn.style.display = "none";
+      info_btn.style.display = "none";
+      cancel.style.display = "none"
+
+      function userAccount() {
+        userAccountNumber = parseInt(prompt("Enter your Account Number :"));
+        if (userAccountNumber == accountNumber) {
+          userPin = parseInt(prompt("Enter your Account PIN :"));
+
+          if (userPin == accountPIN) {
+            UserAccount_btn.style.display = "none";
+            credit_btn.style.display = "";
+            debit_btn.style.display = "";
+            info_btn.style.display = "";
+            cancel.style.display = ""
+          } else {
+            alert("PIN Wrong. Try Again");
+            pin_btn.style.display = "";
+          }
+        } else {
+          show.innerHTML = "Invaild Account Number";
+        }
+      }
+
+      function changePin() {
+        user_number = parseInt(prompt("Enter your Phone Number :"));
+        if (user_number == number) {
+          user_otp = parseInt(prompt("Enter Otp"));
+          if (user_otp == otp) {
+            change_pin = parseInt(prompt("Reset your Password"));
+            accountPIN = change_pin;
+          } else {
+            show.innerHTML = "Invaild Otp Number";
+          }
+        } else {
+          show.innerHTML = "Invaild Phone Number";
+        }
+      }
+
+      function info(){
+        setTimeout(() => {
+            show.innerHTML = ""
+        },4000)
+        show.innerHTML = `Your Account Number :<mark> ${accountNumber} </mark> <br> Your Account PIN :<mark> ${accountPIN} </mark> <br> Your balance :<mark> ${amount} </mark> <br> Your Bank Manager Number :<mark> 9900889955 </mark>`
+      }
+
+      function credit(){
+        let credit_amount = parseInt(prompt("Enter your amount ,  want to Credit"))
+        amount += credit_amount
+      }
+      function debit(){
+        let debit_amount = parseInt(prompt("Enter your amount , want to Debit"))
+        amount -= debit_amount
+      }
+
+      function clearAll(){
+        UserAccount_btn.style.display = ""
+        credit_btn.style.display = "none";
+      debit_btn.style.display = "none";
+      pin_btn.style.display = "none";
+      info_btn.style.display = "none";
+      cancel.style.display = "none"
+      }
+
+      // function (){
+      //     parseInt(prompt("Enter your Account Number :"))
+      // }
+      // function userAccount(){
+      //     parseInt(prompt("Enter your Account Number :"))
+      // }
+
+      // if(userAccountNumber == accountNumber){
+      //     let userAccountPassword = parseInt(prompt("Enter your Account PIN :"))
+      //     if(userAccountPassword == accountPIN){
+      //         let userAccountname = prompt("Enter your Account name :")
+
+      //     }else{
+
+      //     }
+      // }else{
+      //     document.write("Invail account number")
+      // }
+
+      // function userAccoutn(){
+      //     let userAccountNumber = parseInt(prompt("Enter your Account Number :"))
+      // }
+    </script>
+  </body>
+</html>
