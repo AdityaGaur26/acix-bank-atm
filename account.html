@@ -5,8 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Acis Bank</title>
     <style>
-      #result {
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 0 16px;
         text-align: center;
+      }
+
+      button {
+        padding: 10px 16px;
+        margin: 6px;
+        font-size: 15px;
+        cursor: pointer;
+        border: 1px solid #333;
+        border-radius: 6px;
+        background-color: #f4f4f4;
+      }
+
+      button:hover {
+        background-color: #e2e2e2;
+      }
+
+      #result {
+        margin-top: 24px;
+        font-size: 20px;
+        line-height: 1.6;
       }
     </style>
   </head>
@@ -32,7 +56,7 @@
       let accountNumber = 1;
       let accountPIN = 262007;
       let name = "Aditya";
-      let amount = 100000
+      let amount = 100000;
 
       let UserAccount_btn = document.getElementById("UserAccount");
       let credit_btn = document.getElementById("credit");
@@ -40,13 +64,13 @@
       let pin_btn = document.getElementById("pin");
       let show = document.getElementById("result");
       let info_btn = document.getElementById("info");
-      let cancel = document.getElementById("cancel")
+      let cancel = document.getElementById("cancel");
 
       credit_btn.style.display = "none";
       debit_btn.style.display = "none";
       pin_btn.style.display = "none";
       info_btn.style.display = "none";
-      cancel.style.display = "none"
+      cancel.style.display = "none";
 
       function userAccount() {
         userAccountNumber = parseInt(prompt("Enter your Account Number :"));
@@ -58,7 +82,7 @@
             credit_btn.style.display = "";
             debit_btn.style.display = "";
             info_btn.style.display = "";
-            cancel.style.display = ""
+            cancel.style.display = "";
           } else {
             alert("PIN Wrong. Try Again");
             pin_btn.style.display = "";
@@ -76,36 +100,46 @@
             change_pin = parseInt(prompt("Reset your Password"));
             accountPIN = change_pin;
           } else {
+            setTimeout(() => {
+          show.innerHTML = "";
+        }, 4000);
             show.innerHTML = "Invaild Otp Number";
           }
         } else {
+          setTimeout(() => {
+          show.innerHTML = "";
+        }, 4000);
           show.innerHTML = "Invaild Phone Number";
         }
       }
 
-      function info(){
+      function info() {
         setTimeout(() => {
-            show.innerHTML = ""
-        },4000)
-        show.innerHTML = `Your Account Number :<mark> ${accountNumber} </mark> <br> Your Account PIN :<mark> ${accountPIN} </mark> <br> Your balance :<mark> ${amount} </mark> <br> Your Bank Manager Number :<mark> 9900889955 </mark>`
+          show.innerHTML = "";
+        }, 4000);
+        show.innerHTML = `Your Account Number :<mark> ${accountNumber} </mark> <br> Your Account PIN :<mark> ${accountPIN} </mark> <br> Your balance :<mark> ${amount} </mark> <br> Your Bank Manager Number :<mark> 9900889955 </mark>`;
       }
 
-      function credit(){
-        let credit_amount = parseInt(prompt("Enter your amount ,  want to Credit"))
-        amount += credit_amount
+      function credit() {
+        let credit_amount = parseInt(
+          prompt("Enter your amount ,  want to Credit"),
+        );
+        amount += credit_amount;
       }
-      function debit(){
-        let debit_amount = parseInt(prompt("Enter your amount , want to Debit"))
-        amount -= debit_amount
+      function debit() {
+        let debit_amount = parseInt(
+          prompt("Enter your amount , want to Debit"),
+        );
+        amount -= debit_amount;
       }
 
-      function clearAll(){
-        UserAccount_btn.style.display = ""
+      function clearAll() {
+        UserAccount_btn.style.display = "";
         credit_btn.style.display = "none";
-      debit_btn.style.display = "none";
-      pin_btn.style.display = "none";
-      info_btn.style.display = "none";
-      cancel.style.display = "none"
+        debit_btn.style.display = "none";
+        pin_btn.style.display = "none";
+        info_btn.style.display = "none";
+        cancel.style.display = "none";
       }
     </script>
   </body>
